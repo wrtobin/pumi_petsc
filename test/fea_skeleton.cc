@@ -179,6 +179,9 @@ int main(int * ac, char * av[])
   las::Vec * uv = las::createPetscVector(-1,n);
   las::Vec * f = las::createPetscVector(-1,n);
 
+  // preallocate matrix for better performance
+  //  (more important in nonlinear problems)
+
   // loop over mesh and assemble linear structures
   HookesIntegrator integrator(u,k,f,1,3000,0.3);
   integrator.process(msh);
