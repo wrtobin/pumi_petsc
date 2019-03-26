@@ -9,9 +9,9 @@ char * mdl_fl = NULL;
 char * msh_fl = NULL;
 char * petsc_opts = NULL;
 
-bool parse_options(int * ac, char * av[])
+bool parse_options(int ac, char * av[])
 {
-  if(*ac != 4)
+  if(ac != 4)
   {
     std::cout << "Usage: " << argv[0] << " [model] [mesh] [petsc_options]" << std::endl;
     return false;
@@ -148,7 +148,7 @@ apf::DynamicMatrix isotropicLinearElasticityTensor(double E, double v)
   return result;
 }
 
-int main(int * ac, char * av[])
+int main(int ac, char * av[])
 {
   int errs = 0;
   parse_options(ac,av);
