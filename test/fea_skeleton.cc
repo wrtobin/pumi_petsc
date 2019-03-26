@@ -108,6 +108,8 @@ public:
     // numerical integration
     kt *= w * dV;
     Ke += kt;
+
+    // TODO : generate any contributions to the force vector
   }
   void outElement()
   {
@@ -149,10 +151,11 @@ apf::DynamicMatrix isotropicLinearElasticityTensor(double E, double v)
 int main(int * ac, char * av[])
 {
   int errs = 0;
+  parse_options(ac,av);
   // init libs
   MPI_Init(&argc,&argv);
   PCU_Comm_Init();
-  PetscInitialize(&argc,&argv,,PETSC_NULL);
+  PetscInitialize(&argc,&argv,petsc_opts,PETSC_NULL);
   pumi_start();
 
   pGeom mdl = pumi_geom_load(mdl_fl,"mesh");
